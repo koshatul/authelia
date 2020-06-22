@@ -1,5 +1,22 @@
 package schema
 
+// LDAPStorageConfiguration represents the configuration related to LDAP server for MFA storage.
+type LDAPStorageConfiguration struct {
+	URL                string                          `mapstructure:"url"`
+	SkipVerify         bool                            `mapstructure:"skip_verify"`
+	BaseDN             string                          `mapstructure:"base_dn"`
+	AdditionalUsersDN  string                          `mapstructure:"additional_users_dn"`
+	UsersFilter        string                          `mapstructure:"users_filter"`
+	UsernameAttribute  string                          `mapstructure:"username_attribute"`
+	MFAMethodAttribute string                          `mapstructure:"mfamethod_attribute"`
+	MFASecretAttribute string                          `mapstructure:"mfasecret_attribute"`
+	User               string                          `mapstructure:"user"`
+	Password           string                          `mapstructure:"password"`
+	Local              *LocalStorageConfiguration      `mapstructure:"local"`
+	MySQL              *MySQLStorageConfiguration      `mapstructure:"mysql"`
+	PostgreSQL         *PostgreSQLStorageConfiguration `mapstructure:"postgres"`
+}
+
 // LocalStorageConfiguration represents the configuration when using local storage.
 type LocalStorageConfiguration struct {
 	Path string `mapstructure:"path"`
@@ -30,4 +47,11 @@ type StorageConfiguration struct {
 	Local      *LocalStorageConfiguration      `mapstructure:"local"`
 	MySQL      *MySQLStorageConfiguration      `mapstructure:"mysql"`
 	PostgreSQL *PostgreSQLStorageConfiguration `mapstructure:"postgres"`
+	LDAP       *LDAPStorageConfiguration       `mapstructure:"ldap"`
+}
+
+// DefaultLDAPStorageBackendConfiguration represents the default LDAP config.
+var DefaultLDAPStorageBackendConfiguration = LDAPStorageConfiguration{
+	MFAMethodAttribute: "mfaMethod",
+	MFASecretAttribute: "mfaSecret",
 }

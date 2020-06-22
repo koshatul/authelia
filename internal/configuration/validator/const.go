@@ -57,6 +57,34 @@ var validKeys = []string{
 	"storage.postgres.password",
 	"storage.postgres.sslmode",
 
+	// LDAP Storage Backend Keys.
+	"storage.ldap.url",
+	"storage.ldap.skip_verify",
+	"storage.ldap.base_dn",
+	"storage.ldap.username_attribute",
+	"storage.ldap.additional_users_dn",
+	"storage.ldap.users_filter",
+	"storage.ldap.user",
+	"storage.ldap.password",
+
+	// Local Storage Keys.
+	"storage.ldap.local.path",
+
+	// MySQL Storage Keys.
+	"storage.ldap.mysql.host",
+	"storage.ldap.mysql.port",
+	"storage.ldap.mysql.database",
+	"storage.ldap.mysql.username",
+	"storage.ldap.mysql.password",
+
+	// PostgreSQL Storage Keys.
+	"storage.ldap.postgres.host",
+	"storage.ldap.postgres.port",
+	"storage.ldap.postgres.database",
+	"storage.ldap.postgres.username",
+	"storage.ldap.postgres.password",
+	"storage.ldap.postgres.sslmode",
+
 	// FileSystem Notifier Keys.
 	"notifier.filesystem.filename",
 	"notifier.disable_startup_check",

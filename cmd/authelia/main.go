@@ -76,6 +76,8 @@ func startServer() {
 		storageProvider = storage.NewMySQLProvider(*config.Storage.MySQL)
 	case config.Storage.Local != nil:
 		storageProvider = storage.NewSQLiteProvider(config.Storage.Local.Path)
+	case config.Storage.LDAP != nil:
+		storageProvider = storage.NewLDAPProvider(*config.Storage.LDAP)
 	default:
 		log.Fatalf("Unrecognized storage backend")
 	}
